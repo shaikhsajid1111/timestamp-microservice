@@ -17,6 +17,9 @@ const dreams = [
 // https://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 
+const cors = require("cors");
+app.use(cors())
+
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
@@ -37,21 +40,25 @@ app.get("/api/timestamp",(req,res) =>{
 })
 
 
-app.get("/api/timestamp/:date_string",(req,res)=>{
+app.get("/api/timestamp/:date_string",(req,res) => {
   var date_str = req.params.date_string;
+  console.log(date_str)
   
   if(/\d{5,}/.test(date_str)){
+    console.log("Unix based")
     var date_int = parseInt(date_str);
     res.json({
       unix : date_int,
       utc : new Date(date_int).toUTCString()
     })
+    return
   }
+  console.log("Unix based 2")
   
   let date_obj = new Date(date_str);
   
-  if(date_obj.toString() == "Invalid Date"){
-    res.json({"error" : "Inavlid date"})
+  if(date_obj.toString() == "Invalid Date" ){
+    res.json({error : "Invalid date"})
   }else{
     res.json({
       unix : date_obj.valueOf(),
