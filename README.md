@@ -1,30 +1,20 @@
-# hello-express
+## FreeCodeCamp Timestamp Microservice
 
-A server that serves a webpage, its resources, and some data
+This is a Node.js (with Express.js) little application which is part of the FCC Back End Certification. It takes a date string and gives you back a JSON with Unix value and natural format for the given date.
 
+    Cheers from Marseille (France), Lior Chamla
 
-## Your Project
+User stories:
 
-On the front-end,
+        I can pass a string as a parameter, and it will check to see whether that string contains either a unix timestamp or a natural language date (example: January 1, 2016)
+        If it does, it returns both the Unix timestamp and the natural language form of that date.
+        If it does not contain a date or Unix timestamp, it returns null for those properties.
 
-- Edit `views/index.html` to change the content of the webpage
-- `public/client.js` is the javacript that runs when you load the webpage
-- `public/style.css` is the styles for `views/index.html`
-- Drag in `assets`, like images or music, to add them to your project
+Example usage:
 
-On the back-end,
+https://timestamp-microservice-liorchamla.c9users.io/December%2015,%202015
+https://timestamp-microservice-liorchamla.c9users.io/1450137600
 
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env` (nobody can see this but you and people you invite)
+Example output:
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy.
-
-
-## Made by [Glitch](https://glitch.com/)
-
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
-
-Find out more [about Glitch](https://glitch.com/about).
-
-( ᵔ ᴥ ᵔ )
+{ "unix": 1450137600, "natural": "December 15, 2015" }
